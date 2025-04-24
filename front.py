@@ -1,15 +1,18 @@
 import streamlit as st
 import pandas as pd
 
-# Caminhos para os arquivos gerados
-regras_df = pd.read_csv(r"C:\Users\Richard\Downloads\teste\regras_apriori_streaming.csv")
-with open(r"C:\Users\Richard\Downloads\teste\titulos_streaming.txt", "r", encoding="utf-8") as f:
+# Carregar regras e títulos com caminhos relativos
+regras_df = pd.read_csv("regras_apriori_streaming.csv")
+with open("titulos_streaming.txt", "r", encoding="utf-8") as f:
     titulos = [linha.strip() for linha in f.readlines() if linha.strip()]
 
+# Título do app
 st.title("🎬 Sistema de Recomendação de Séries com Apriori")
 
+# Dropdown de seleção
 titulo_escolhido = st.selectbox("Selecione uma série que você assistiu:", titulos)
 
+# Botão para recomendar
 if st.button("Recomendar"):
     resultados = regras_df[regras_df['Base'] == titulo_escolhido]
 
