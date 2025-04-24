@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 
-# Caminhos para os arquivos gerados
-regras_df = pd.read_csv(r"C:\Users\Richard\Downloads\teste\regras_apriori_streaming.csv")
-with open(r"C:\Users\Richard\Downloads\teste\titulos_streaming.txt", "r", encoding="utf-8") as f:
+# Caminhos relativos (funciona tanto local quanto no Streamlit Cloud)
+regras_df = pd.read_csv("regras_apriori_streaming.csv")
+with open("titulos_streaming.txt", "r", encoding="utf-8") as f:
     titulos = [linha.strip() for linha in f.readlines() if linha.strip()]
 
 st.title("🎬 Sistema de Recomendação de Séries com Apriori")
